@@ -1,0 +1,496 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="apple-mobile-web-app-title" content="Кровля"><meta name="theme-color" content="#1E5A64"><meta name="color-scheme" content="light dark"><link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACWUlEQVR42u3du1EDQRBF0ReJAsMmJmLCJqHFBxlQCE1/zta1gWkdjRb9NreXV+luMQLBITgEh+AQHIJDcAgOwSE4JDgEh+AQHIJDcAgOwSE4BIcEh+AQHIJDcAgOwSE4BIfgkOAQHIJDcAgOwSE4BIfgEBy7uq7LEOD4auL7YSxw3JfBx3Yc188OOMjgA47fy1jrI2TwAcefWOwkEjL42I7jevQBBxmrfQQLRDbiuJ51wEHGOh8hg48tOK7TBxxjZTzqh8AxUMbDfxQco2TwMQfH/50oOAWJDeP4r4CjpYzlPkIGH3NwnDoVWHgKEhuGLWQCjiI3zB4fIYOPxjhqPthvOAWJDcMW0hJHi9EP9hEy+OiEo+PD+chTkNgw/PE9cAwY7iQfIcNCSuOY94A9Y0VxP7O0ojjGP8nYeoExOMushWPbeyOarjfuSRZeBcfy93P3Wn6Mho/DOHwGpOM04r5iCzmGg4y+wwkZfBzAQUb3QaXmgpewKD6xijgWyqg5tPh+cd/L/lQcZMyYXpWdg4mCA4xL3bhcUF0cEJQd4+HnOdz8lccYF150Cctar624sVtMMi727LLZSz9l3+K4+ZQ9HHDAAQcccMABhwSH4BAcgkNwCA7BITgEh+CQuuB4e//YEBxwwAEHHHDAAQccEhyCQ3AIDsEhOASH4BAcgkPy2orXVuCAAw444IADDjjgkP9WBIfgEBwSHIJDcAgOwSE4BIfgEByCQ3BIcAgOwSE4BIfgEByCQ3AIDgkOwSE4BIfgEByCQ3AIDsEhwSE4BIfgEByCQ3CoY58B9HSJ2hyfRwAAAABJRU5ErkJggg=="><link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACWUlEQVR42u3du1EDQRBF0ReJAsMmJmLCJqHFBxlQCE1/zta1gWkdjRb9NreXV+luMQLBITgEh+AQHIJDcAgOwSE4JDgEh+AQHIJDcAgOwSE4BIcEh+AQHIJDcAgOwSE4BIfgkOAQHIJDcAgOwSE4BIfgEBy7uq7LEOD4auL7YSxw3JfBx3Yc188OOMjgA47fy1jrI2TwAcefWOwkEjL42I7jevQBBxmrfQQLRDbiuJ51wEHGOh8hg48tOK7TBxxjZTzqh8AxUMbDfxQco2TwMQfH/50oOAWJDeP4r4CjpYzlPkIGH3NwnDoVWHgKEhuGLWQCjiI3zB4fIYOPxjhqPthvOAWJDcMW0hJHi9EP9hEy+OiEo+PD+chTkNgw/PE9cAwY7iQfIcNCSuOY94A9Y0VxP7O0ojjGP8nYeoExOMushWPbeyOarjfuSRZeBcfy93P3Wn6Mho/DOHwGpOM04r5iCzmGg4y+wwkZfBzAQUb3QaXmgpewKD6xijgWyqg5tPh+cd/L/lQcZMyYXpWdg4mCA4xL3bhcUF0cEJQd4+HnOdz8lccYF150Cctar624sVtMMi727LLZSz9l3+K4+ZQ9HHDAAQcccMABhwSH4BAcgkNwCA7BITgEh+CQuuB4e//YEBxwwAEHHHDAAQccEhyCQ3AIDsEhOASH4BAcgkPy2orXVuCAAw444IADDjjgkP9WBIfgEBwSHIJDcAgOwSE4BIfgEByCQ3BIcAgOwSE4BIfgEByCQ3AIDgkOwSE4BIfgEByCQ3AIDsEhwSE4BIfgEByCQ3CoY58B9HSJ2hyfRwAAAABJRU5ErkJggg=="><title>Смета и график кровли</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600&display=swap">
+<style>
+/* Раскладка: шапка с загрузкой файла, под ней цифры, замечания и вкладки с таблицами и диаграммой Ганта.
+   Палитра: чертёжная бумага, графит, цвет кровельного рулона и янтарь для предупреждений. */
+:root{
+  --bg:#F1F2EF; --surface:#FFFFFF; --ink:#1B2326; --muted:#5C686C; --line:#D8DCD6;
+  --accent:#1E5A64; --accent-ink:#FFFFFF; --bar:#2C7886; --bar-soft:#DCEBED;
+  --warn:#9A5208; --warn-bg:#FBEBD6; --bad:#B3261E; --good:#2B7A4B; --field:#F7F8F6;
+  --font:'IBM Plex Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --head:'IBM Plex Sans Condensed','IBM Plex Sans',system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#12181A; --surface:#1A2326; --ink:#E5EAE9; --muted:#97A4A7; --line:#2C373A;
+  --accent:#74B8C3; --accent-ink:#0D1A1D; --bar:#4C9DAB; --bar-soft:#22393E;
+  --warn:#EBA55F; --warn-bg:#352718; --bad:#F2918A; --good:#7CC79B; --field:#151D20; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#12181A; --surface:#1A2326; --ink:#E5EAE9; --muted:#97A4A7; --line:#2C373A;
+  --accent:#74B8C3; --accent-ink:#0D1A1D; --bar:#4C9DAB; --bar-soft:#22393E;
+  --warn:#EBA55F; --warn-bg:#352718; --bad:#F2918A; --good:#7CC79B; --field:#151D20; color-scheme:dark;}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:14px/1.45 var(--font);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:18px 40px}
+.wrap{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+h1{font:600 24px/1.15 var(--head);margin:0;letter-spacing:.01em;text-wrap:balance}
+h2{font:600 15px/1.2 var(--head);margin:0 0 8px;letter-spacing:.02em;text-transform:uppercase;color:var(--muted)}
+.top{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:flex-end;justify-content:space-between}
+.top>div{min-width:0}
+.sub{margin:4px 0 0;color:var(--muted);font-size:13px;overflow-wrap:anywhere}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 16px;border:1px solid var(--line);border-radius:6px;
+  background:var(--surface);color:var(--ink);font:500 14px var(--font);cursor:pointer}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn:focus-visible,input:focus-visible,select:focus-visible,summary:focus-visible,.tab:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.panel,.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px}
+details.card>summary{cursor:pointer;font:600 15px var(--head);letter-spacing:.02em;text-transform:uppercase;color:var(--muted);list-style:none}
+details.card>summary::-webkit-details-marker{display:none}
+details.card>summary::after{content:" ▾"}
+.params{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:12px}
+.field[hidden]{display:none}
+.field{display:flex;flex-direction:column;gap:4px;min-width:0}
+.field label{font-size:12px;color:var(--muted)}
+.field input,.field select{min-height:38px;padding:0 10px;border:1px solid var(--line);border-radius:6px;background:var(--field);color:var(--ink);font:14px var(--font);width:100%}
+.hint{font-size:12px;color:var(--muted);margin:10px 0 0}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.fig{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;min-width:0}
+.fig .k{font-size:12px;color:var(--muted)}
+.fig .v{font:600 24px/1.2 var(--head);font-variant-numeric:tabular-nums;margin-top:2px;overflow-wrap:anywhere}
+.fig .n{font-size:12px;color:var(--muted);margin-top:2px}
+.over{color:var(--warn)} .good{color:var(--good)} .bad{color:var(--bad)}
+.warn{background:var(--warn-bg);border:1px solid var(--warn);border-radius:8px;padding:12px 14px;color:var(--ink)}
+.warn strong{color:var(--warn)}
+.warn p{margin:6px 0 0}
+.warn .row{display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center;margin-top:10px}
+.warn input[type=number]{width:90px;min-height:34px;padding:0 8px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);font:14px var(--font)}
+.tabs{display:flex;gap:4px;overflow-x:auto;border-bottom:1px solid var(--line)}
+.tab{flex:none;min-height:40px;padding:0 16px;border:0;border-bottom:3px solid transparent;background:none;color:var(--muted);font:500 14px var(--font);cursor:pointer}
+.tab[aria-selected=true]{color:var(--ink);border-bottom-color:var(--accent)}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th,td{padding:7px 10px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+th{position:sticky;top:0;background:var(--surface);font:600 12px var(--font);color:var(--muted);z-index:1}
+th:first-child,td:first-child,td.l,th.l{text-align:left}
+td.name{white-space:normal;min-width:260px;max-width:520px;text-align:left}
+@media (max-width:560px){td.name{min-width:170px}}
+tr.tot td{font-weight:600;background:var(--field)}
+tr.flag td{background:var(--warn-bg)}
+.bar{display:inline-block;height:6px;border-radius:3px;background:var(--bar);vertical-align:middle;margin-left:8px}
+.lag{width:64px;min-height:30px;padding:0 6px;border:1px solid var(--line);border-radius:6px;background:var(--field);color:var(--ink);font:14px var(--font);text-align:right}
+.gantt{--dw:9px;position:relative}
+.g-row{display:flex;align-items:center;border-bottom:1px solid var(--line);min-height:30px}
+.g-lab{flex:none;width:170px;position:sticky;left:0;background:var(--surface);z-index:2;padding:4px 10px;font-size:12px;line-height:1.25;border-right:1px solid var(--line)}
+.g-track{position:relative;height:30px;flex:none;
+  background-image:repeating-linear-gradient(90deg,transparent 0,transparent calc(var(--dw)*7 - 1px),var(--line) calc(var(--dw)*7 - 1px),var(--line) calc(var(--dw)*7))}
+.g-bar{position:absolute;top:7px;height:16px;border-radius:3px;background:var(--bar);color:var(--accent-ink);font-size:11px;line-height:16px;padding:0 4px;overflow:hidden;white-space:nowrap}
+.g-head .g-track{height:26px;background:none}
+.g-mon{position:absolute;top:5px;font-size:11px;color:var(--muted);white-space:nowrap;border-left:1px solid var(--line);padding-left:4px;height:16px}
+.note{font-size:12px;color:var(--muted);margin:8px 2px 0}
+.msg{font-size:13px;color:var(--muted);min-height:18px}
+.msg.err{color:var(--bad)}
+@media (max-width:560px){.field input,.field select,.lag,.warn input[type=number]{font-size:16px}.btn{min-height:44px}.tab{min-height:44px}.g-lab{width:120px}.fig .v{font-size:21px}h1{font-size:21px}}
+@media (prefers-reduced-motion:no-preference){.btn{transition:background-color .15s}}
+</style>
+
+<style>html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);-webkit-text-size-adjust:100%}body{margin:0}</style></head><body><div class="wrap">
+  <header class="top">
+    <div>
+      <h1>Смета и график кровли</h1>
+      <p class="sub" id="obj"></p>
+    </div>
+    <div class="actions">
+      <label class="btn" for="file" id="fileBtn">Загрузить ТКП (.xlsx)</label>
+      <input id="file" type="file" accept=".xlsx,.xls" hidden>
+      <button class="btn primary" id="dl" type="button">Скачать Excel</button>
+    </div>
+  </header>
+  <div class="msg" id="msg" role="status"></div>
+
+  <section class="figs" id="figs" aria-label="Главные цифры"></section>
+  <section id="warns" style="display:flex;flex-direction:column;gap:10px"></section>
+
+  <details class="card" id="paramBox" open>
+    <summary>Допущения</summary>
+    <div class="params">
+      <div class="field"><label for="p-start">Дата начала работ</label><input id="p-start" type="date"></div>
+      <div class="field"><label for="p-crew">Бригада, чел.</label><input id="p-crew" type="number" min="1" step="1" inputmode="numeric"></div>
+      <div class="field"><label for="p-rate">Оплата рабочего, руб./день</label><input id="p-rate" type="number" min="1" step="100" inputmode="numeric"></div>
+      <div class="field"><label for="p-labor">Доля оплаты труда в СМР, %</label><input id="p-labor" type="number" min="0" max="100" step="1" inputmode="numeric"></div>
+      <div class="field"><label for="p-ovh">Накладные, % от СМР без НДС</label><input id="p-ovh" type="number" min="0" max="100" step="1" inputmode="numeric"></div>
+      <div class="field"><label for="p-vat">НДС, %</label><input id="p-vat" type="number" min="0" max="100" step="1" inputmode="numeric"></div>
+      <div class="field" id="candBox" hidden><label for="p-cand">Чьи цены считать</label><select id="p-cand"></select></div>
+    </div>
+    <p class="hint">Бригада, ставка, доля оплаты труда и накладные — ваши оценки, в ТКП их нет. Срок считается так: оплата труда этапа ÷ (бригада × ставка в день). Праздники РФ учтены без переносов.</p>
+  </details>
+
+  <div>
+    <div class="tabs" role="tablist" id="tabs">
+      <button class="tab" role="tab" data-tab="fin" aria-selected="true">Финотчёт</button>
+      <button class="tab" role="tab" data-tab="gantt" aria-selected="false">График</button>
+      <button class="tab" role="tab" data-tab="est" aria-selected="false">Смета</button>
+      <button class="tab" role="tab" data-tab="mat" aria-selected="false">Материалы</button>
+    </div>
+    <div id="view" style="margin-top:14px"></div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<script>
+/* ===== Разбор ТКП и расчёт (без DOM, тестируется в Node) ===== */
+function parseTKP(aoa){
+  var h=-1,i;
+  for(i=0;i<Math.min(aoa.length,40);i++){
+    if(aoa[i]&&aoa[i].some(function(c){return typeof c==='string'&&/^Наименование затрат/.test(c.trim());})){h=i;break;}
+  }
+  if(h<0) throw new Error('Не нашёл колонку «Наименование затрат». Нужен файл ТКП в формате заказчика.');
+  var hr=aoa[h];
+  function find(re){return hr.findIndex(function(c){return typeof c==='string'&&re.test(c);});}
+  var cName=find(/^Наименование затрат/), cCode=find(/Код узла/), cUnit=find(/Ед\.\s*изм/), cQty=find(/Общее кол/), cNum=find(/Номер п\/п/);
+  var cP=find(/ПСПР|Предельная/);
+  if([cName,cCode,cUnit,cQty,cNum,cP].some(function(x){return x<0;})) throw new Error('В шапке ТКП не хватает колонок (код узла, ед. изм., количество или ПСПР).');
+  var cands=[];
+  hr.forEach(function(c,ix){
+    if(ix>cP&&typeof c==='string'&&c.trim()&&!/Разница/i.test(c)&&!/^\d+$/.test(c.trim())) cands.push({col:ix,name:c.trim()});
+  });
+  if(!cands.length) throw new Error('Не нашёл колонки с ценами подрядчика.');
+  var obj='';
+  for(i=0;i<h;i++){ var v=aoa[i]&&aoa[i][0]; if(typeof v==='string'&&/г\.\s*Москва|адрес|Объект/i.test(v)){obj=v.trim();break;} }
+  var num=function(v){return typeof v==='number'&&isFinite(v)?v:0;};
+  var groups={},works=[],cur=null;
+  for(i=h+1;i<aoa.length;i++){
+    var r=aoa[i]; if(!r) continue;
+    var code=r[cNum];
+    if(typeof code!=='string'||!/^\d+(\.\d+)+$/.test(code.trim())) continue;
+    code=code.trim();
+    var name=r[cName], unit=r[cUnit], qty=r[cQty], icr=r[cCode];
+    if(icr&&unit&&typeof qty==='number'){
+      var parts=code.split('.'),grp='';
+      while(parts.length>1){parts.pop();var g=groups[parts.join('.')];if(g){grp=g;break;}}
+      cur={code:code,name:String(name||'').trim(),unit:String(unit).trim(),qty:qty,group:grp||'Прочее',children:[],
+           pm:0,ps:0,cm:0,cs:0};
+      works.push(cur);
+      cur._r=r;
+    } else if(!icr&&name&&unit&&typeof qty==='number'){
+      if(cur) cur.children.push({name:String(name).trim(),unit:String(unit).trim(),qty:qty,_r:r});
+    } else if(name&&!unit){
+      groups[code]=String(name).trim();
+    }
+  }
+  return {obj:obj,cands:cands,cols:{p:cP},works:works,_raw:true,_cP:cP};
+}
+/* цены выбранного подрядчика проставляются отдельно, чтобы можно было переключать */
+function applyContractor(model,col){
+  var cP=model._cP;
+  model.works.forEach(function(w){
+    var r=w._r,n=function(v){return typeof v==='number'&&isFinite(v)?v:0;};
+    w.pm=n(r[cP]); w.ps=n(r[cP+1]); w.cm=n(r[col]); w.cs=n(r[col+1]);
+    w.children.forEach(function(c){c.pm=n(c._r[cP]);c.cm=n(c._r[col]);});
+    w.unitMismatch=null;
+    w.children.forEach(function(c){
+      if(c.unit==='м3'&&w.unit!=='м3'&&Math.abs(c.qty-w.qty)<=1e-6*Math.max(1,w.qty)) w.unitMismatch={child:c.name,unit:w.unit};
+    });
+  });
+  return model;
+}
+/* превращает модель в то, что можно положить в JSON (без ссылок на строки) */
+function plainModel(model){
+  return {obj:model.obj,company:model.company,works:model.works.map(function(w){
+    return {code:w.code,name:w.name,unit:w.unit,qty:w.qty,group:w.group,pm:w.pm,ps:w.ps,cm:w.cm,cs:w.cs,
+      unitMismatch:w.unitMismatch,children:w.children.map(function(c){return {name:c.name,unit:c.unit,qty:c.qty,pm:c.pm,cm:c.cm};})};
+  })};
+}
+
+function stageRank(n){
+  var s=n.toLowerCase();
+  if(/фундамент/.test(s)) return 1;
+  if(/вертикал/.test(s)){ if(/гидроизол|примыкан/.test(s)) return 8; if(/облицов/.test(s)) return 6; return 5; }
+  if(/паро|тепло|огрунт/.test(s)) return 2;
+  if(/разуклон/.test(s)) return 3;
+  if(/стяжк|галтел/.test(s)) return 4;
+  if(/гидроизол/.test(s)) return 7;
+  if(/облицов/.test(s)) return 6;
+  if(/воронк|прочие|трубопровод|аэратор|водосток|ливн/.test(s)) return 9;
+  if(/металл|фартук|молни/.test(s)) return 10;
+  if(/покрыт|плитк/.test(s)) return 11;
+  return 6.5;
+}
+
+/* ---- даты (всё в UTC, чтобы не зависеть от часового пояса) ---- */
+function D(y,m,d){return Date.UTC(y,m-1,d);}
+var DAY=86400000;
+function isHoliday(t){
+  var d=new Date(t),m=d.getUTCMonth()+1,dd=d.getUTCDate();
+  if(m===1&&dd<=8) return true;
+  return (m===2&&dd===23)||(m===3&&dd===8)||(m===5&&(dd===1||dd===9))||(m===6&&dd===12)||(m===11&&dd===4);
+}
+function isWork(t){var w=new Date(t).getUTCDay();return w!==0&&w!==6&&!isHoliday(t);}
+function nextWork(t){while(!isWork(t)) t+=DAY; return t;}
+function prevWork(t){while(!isWork(t)) t-=DAY; return t;}
+function addWork(t,n){ // n рабочих дней вперёд (или назад)
+  var step=n>=0?DAY:-DAY,k=Math.abs(n);
+  while(k>0){t+=step; if(isWork(t)) k--;}
+  return t;
+}
+function workBetween(a,b){var c=0,t=a;while(t<=b){if(isWork(t))c++;t+=DAY;}return c;}
+
+function compute(model,P,lags){
+  lags=lags||{};
+  var rows=model.works.map(function(w){
+    var f=(P.fixUnits&&w.unitMismatch)?P.unitK:1;
+    var r={w:w,f:f};
+    r.pm=w.qty*w.pm*f; r.ps=w.qty*w.ps; r.cm=w.qty*w.cm*f; r.cs=w.qty*w.cs;
+    r.total=r.cm+r.cs; r.limit=r.pm+r.ps; r.diff=r.total-r.limit;
+    return r;
+  });
+  var map={},order=[];
+  rows.forEach(function(r){
+    var g=r.w.group;
+    if(!map[g]){map[g]={name:g,mat:0,smr:0,limit:0,rank:stageRank(g),idx:order.length};order.push(g);}
+    var s=map[g]; s.mat+=r.cm; s.smr+=r.cs; s.limit+=r.limit;
+  });
+  var stages=order.map(function(g){return map[g];}).sort(function(a,b){return a.rank-b.rank||a.idx-b.idx;});
+  var T={mat:0,smr:0,limit:0};
+  stages.forEach(function(s){s.total=s.mat+s.smr;s.diff=s.total-s.limit;T.mat+=s.mat;T.smr+=s.smr;T.limit+=s.limit;});
+  T.total=T.mat+T.smr; T.diff=T.total-T.limit;
+  var v=1+P.vat, revNet=T.total/v, matNet=T.mat/v, smrNet=T.smr/v;
+  var labor=smrNet*P.labor, ovh=smrNet*P.ovh, profit=revNet-matNet-labor-ovh;
+  var pl={rev:T.total,vatSum:T.total-revNet,revNet:revNet,matNet:matNet,smrNet:smrNet,labor:labor,ovh:ovh,profit:profit,margin:revNet?profit/revNet:0};
+  /* график */
+  var start=nextWork(P.start),prevEnd=null,minS=Infinity,maxE=0,laborDays=0;
+  stages.forEach(function(s,i){
+    s.laborDays=(s.smr/v)*P.labor/P.rate;
+    s.dur=Math.max(1,Math.ceil(s.laborDays/Math.max(1,P.crew)-1e-9));
+    var lag=lags[s.name]||0,st;
+    if(prevEnd===null) st=start; else st=nextWork(prevEnd+DAY);
+    if(lag>0) st=addWork(st,lag); else if(lag<0) st=addWork(st,lag);
+    st=nextWork(st);
+    s.start=st; s.end=addWork(st,s.dur-1); prevEnd=s.end;
+    minS=Math.min(minS,s.start); maxE=Math.max(maxE,s.end); laborDays+=s.laborDays;
+  });
+  var sched={start:minS,end:maxE,workDays:workBetween(minS,maxE),weeks:Math.ceil((maxE-minS+DAY)/(7*DAY)),laborDays:laborDays};
+  /* замечания */
+  var warns=[];
+  var mm=rows.filter(function(r){return r.w.unitMismatch;});
+  var cust=[],custSum=0;
+  rows.forEach(function(r){r.w.children.forEach(function(c){
+    if(c.pm===0&&c.cm>0){var sum=c.qty*c.cm;cust.push({work:r.w.name,name:c.name,sum:sum});custSum+=sum;}
+  });});
+  return {rows:rows,stages:stages,T:T,pl:pl,sched:sched,mismatch:mm,cust:cust,custSum:custSum};
+}
+function matList(rows){
+  var m={};
+  rows.forEach(function(r){
+    var f=r.f;
+    r.w.children.forEach(function(c){
+      var k=c.name+'|'+c.unit+'|'+c.cm;
+      if(!m[k]) m[k]={name:c.name,unit:c.unit,price:c.cm,qty:0};
+      m[k].qty+=c.qty*(r.w.unitMismatch?f:1);
+    });
+  });
+  var a=Object.keys(m).map(function(k){var x=m[k];x.sum=x.qty*x.price;return x;});
+  a.sort(function(x,y){return y.sum-x.sum;});
+  return a;
+}
+
+</script>
+<script>
+var SAMPLE={"obj":"г. Москва, р-н Северное Измайлово, 7-я Парковая, з/у 19А, Объект застройки","company":"СКС ООО","works":[{"code":"1.1.1.1.1.1.1.1","name":"Огрунтовка поверхности битумным праймером / в 1 слой","unit":"м2","qty":1642,"group":"Паро- и теплоизоляция кровли","pm":59.87,"ps":89,"cm":69.27,"cs":102.35,"unitMismatch":null,"children":[{"name":"Праймер битумный_ / Технониколь №01","unit":"кг","qty":459.76,"pm":213.81,"cm":247.4}]},{"code":"1.1.1.1.1.1.1.2","name":"Огрунтовка поверхности битумным праймером / в 1 слой","unit":"м2","qty":145.1,"group":"Паро- и теплоизоляция кровли","pm":59.87,"ps":89,"cm":69.27,"cs":102.35,"unitMismatch":null,"children":[{"name":"Праймер битумный_ / Технониколь №01","unit":"кг","qty":40.628,"pm":213.81,"cm":247.4}]},{"code":"1.1.1.1.1.1.1.3","name":"Огрунтовка поверхности битумным праймером / в 1 слой","unit":"м2","qty":99.1,"group":"Паро- и теплоизоляция кровли","pm":59.87,"ps":89,"cm":69.27,"cs":102.35,"unitMismatch":null,"children":[{"name":"Праймер битумный_ / Технониколь №01","unit":"кг","qty":27.748,"pm":213.81,"cm":247.4}]},{"code":"1.1.1.1.1.1.1.4","name":"Устройство горизонтальной пароизоляции кровли / из рулонных материалов","unit":"м2","qty":1642,"group":"Паро- и теплоизоляция кровли","pm":174.8,"ps":265,"cm":276.69,"cs":304.75,"unitMismatch":null,"children":[{"name":"Гидроизоляция ТПП, разрывная сила вдоль ≥800Н, разрывная сила поперек ≥800Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤0C, давление в течение 2ч. ≥0,2МПа, теплостойкость ≥80C, полимерная пленка","unit":"м2","qty":1888.3,"pm":152,"cm":240.6}]},{"code":"1.1.1.1.1.1.1.5","name":"Устройство горизонтальной теплоизоляции кровли / в 1 слой","unit":"м2","qty":47.32,"group":"Паро- и теплоизоляция кровли","pm":372.73,"ps":340,"cm":414.15,"cs":391,"unitMismatch":null,"children":[{"name":"Плита теплоизоляционная минераловатная_ / ТЕХНОФЛОР СТАНДАРТ","unit":"м3","qty":2.461,"pm":7166.88,"cm":7963.2}]},{"code":"1.1.1.1.1.1.1.6","name":"Устройство горизонтальной теплоизоляции кровли / в 2 слоя","unit":"м2","qty":1642,"group":"Паро- и теплоизоляция кровли","pm":1125.51,"ps":618,"cm":1262.61,"cs":710.7,"unitMismatch":null,"children":[{"name":"Плита теплоизоляционная минераловатная_ / ТЕХНОРУФ Н ОПТИМА / 1200-600-120мм","unit":"м3","qty":203.608,"pm":5945.41,"cm":6497.4},{"name":"Плита теплоизоляционная минераловатная_ / ТЕХНОРУФ В ЭКСТРА / 1200-600-40мм","unit":"м3","qty":67.322,"pm":9470.25,"cm":11144.7}]},{"code":"1.1.1.1.1.1.1.7","name":"Устройство разделительного слоя на кровле / полиэтиленовая пленка","unit":"м2","qty":47.32,"group":"Паро- и теплоизоляция кровли","pm":52.29,"ps":99,"cm":36.26,"cs":113.85,"unitMismatch":null,"children":[{"name":"Пленка полиэтиленовая_ / 200 мкм","unit":"м2","qty":52.052,"pm":47.54,"cm":32.96}]},{"code":"1.1.1.1.1.1.2.1","name":"Устройство направляющих из ЭППС для разуклонки","unit":"м3","qty":29.25,"group":"Разуклонка кровли","pm":6611.58,"ps":4425,"cm":6611.58,"cs":5088.75,"unitMismatch":null,"children":[{"name":"Пена монтажная_ / Противопожарная ОГНЕЗА (750 мл)","unit":"шт","qty":24,"pm":891.61,"cm":891.61},{"name":"Теплоизоляция_ / Экструдированный пенополистирол","unit":"м3","qty":29.25,"pm":5880,"cm":5880}]},{"code":"1.1.1.1.1.1.2.2","name":"Устройство разуклонки на кровле / из керамзитового гравия","unit":"м3","qty":208.95,"group":"Разуклонка кровли","pm":2851.75,"ps":3178,"cm":3080,"cs":3654.7,"unitMismatch":null,"children":[{"name":"Керамзит_ / 10-20","unit":"м3","qty":229.845,"pm":2592.5,"cm":2800}]},{"code":"1.1.1.1.1.1.3.1","name":"Устройство цементно-песчаной стяжки на кровле / толщ. 20 мм","unit":"м2","qty":19.2,"group":"Устройство стяжки","pm":286.52,"ps":491,"cm":286.52,"cs":564.65,"unitMismatch":null,"children":[{"name":"Смесь цементно-песчаная М200","unit":"кг","qty":729.6,"pm":7.54,"cm":7.54}]},{"code":"1.1.1.1.1.1.3.2","name":"Устройство цементно-песчаной стяжки на кровле / толщ. 40 мм","unit":"м2","qty":47.32,"group":"Устройство стяжки","pm":476.52,"ps":657.99,"cm":476.52,"cs":756.69,"unitMismatch":null,"children":[{"name":"Смесь цементно-песчаная М150","unit":"кг","qty":3596.32,"pm":6.27,"cm":6.27}]},{"code":"1.1.1.1.1.1.3.3","name":"Устройство цементно-песчаной стяжки на кровле / добавлять на 1 мм толщ.","unit":"м2","qty":473.2,"group":"Устройство стяжки","pm":11.91,"ps":10,"cm":11.91,"cs":11.5,"unitMismatch":null,"children":[{"name":"Смесь цементно-песчаная М150","unit":"кг","qty":899.08,"pm":6.27,"cm":6.27}]},{"code":"1.1.1.1.1.1.3.4","name":"Устройство сборной стяжки из ЦСП / в 2 слоя с двухсторонней огрунтовкой каждого слоя","unit":"м2","qty":1642,"group":"Устройство стяжки","pm":1371.3,"ps":654.01,"cm":1549.51,"cs":752.11,"unitMismatch":null,"children":[{"name":"Праймер битумный_ / Технониколь №01","unit":"кг","qty":1642,"pm":213.81,"cm":247.4},{"name":"Плита цементно-стружечная 12мм","unit":"м2","qty":3612.4,"pm":526.13,"cm":591.87}]},{"code":"1.1.1.1.1.1.3.5","name":"Устройство галтели / Техноруф","unit":"пог. м","qty":971.71,"group":"Устройство стяжки","pm":18393.03,"ps":111,"cm":18393.03,"cs":127.65,"unitMismatch":{"child":"Галтель_ / ТЕХНОРУФ В60 ГАЛТЕЛЬ / 1,2м","unit":"пог. м"},"children":[{"name":"Галтель_ / ТЕХНОРУФ В60 ГАЛТЕЛЬ / 1,2м","unit":"м3","qty":971.71,"pm":18393.03,"cm":18393.03}]},{"code":"1.1.1.1.1.1.3.6","name":"Устройство галтели / раствор","unit":"пог. м","qty":72.8,"group":"Устройство стяжки","pm":37.12,"ps":96,"cm":37.12,"cs":110.4,"unitMismatch":null,"children":[{"name":"Смесь цементно-песчаная сухая_/М150","unit":"кг","qty":431,"pm":6.27,"cm":6.27}]},{"code":"1.1.1.1.1.1.4.1","name":"Устройство горизонтальной гидроизоляции кровли / оклеечной / 1-ый слой","unit":"м2","qty":1642,"group":"Гидроизоляция кровли","pm":239.14,"ps":384,"cm":343.85,"cs":441.6,"unitMismatch":null,"children":[{"name":"Гидроизоляция ЭПП, разрывная сила вдоль ≥550Н, разрывная сила поперек -Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤-10C, давление в течение 2ч. ≥0,2МПа, теплостойкость ≥85C, полимерная пленка","unit":"м2","qty":1888.3,"pm":207.95,"cm":299}]},{"code":"1.1.1.1.1.1.4.2","name":"Устройство горизонтальной гидроизоляции кровли / оклеечной / 1-ый слой","unit":"м2","qty":145.1,"group":"Гидроизоляция кровли","pm":239.14,"ps":384,"cm":343.85,"cs":441.6,"unitMismatch":null,"children":[{"name":"Гидроизоляция ЭПП, разрывная сила вдоль ≥550Н, разрывная сила поперек -Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤-10C, давление в течение 2ч. ≥0,2МПа, теплостойкость ≥85C, полимерная пленка","unit":"м2","qty":166.865,"pm":207.95,"cm":299}]},{"code":"1.1.1.1.1.1.4.3","name":"Устройство горизонтальной гидроизоляции кровли / оклеечной / 1-ый слой","unit":"м2","qty":91,"group":"Гидроизоляция кровли","pm":239.14,"ps":384,"cm":448.73,"cs":441.6,"unitMismatch":null,"children":[{"name":"Гидроизоляция ЭПП, разрывная сила вдоль ≥550Н, разрывная сила поперек -Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤-10C, давление в течение 2ч. ≥0,2МПа, теплостойкость ≥85C, полимерная пленка","unit":"м2","qty":104.65,"pm":207.95,"cm":390.2}]},{"code":"1.1.1.1.1.1.4.4","name":"Устройство горизонтальной гидроизоляции кровли / оклеечной / 2-ой слой и последующие","unit":"м2","qty":282,"group":"Гидроизоляция кровли","pm":225.81,"ps":325,"cm":415.04,"cs":373.75,"unitMismatch":null,"children":[{"name":"Гидроизоляция ТКП, разрывная сила вдоль ≥1000Н, разрывная сила поперек ≥1000Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤0C, давление постоянное ≥0,001МПа, теплостойкость ≥80C, сланец серый, крупнозернистая посыпка и полимерная пленка","unit":"м2","qty":324.3,"pm":196.36,"cm":360.9}]},{"code":"1.1.1.1.1.1.4.5","name":"Устройство горизонтальной гидроизоляции кровли / оклеечной / 2-ой слой и последующие","unit":"м2","qty":718.2,"group":"Гидроизоляция кровли","pm":225.81,"ps":325,"cm":318.2,"cs":373.75,"unitMismatch":null,"children":[{"name":"Гидроизоляция ТКП, разрывная сила вдоль ≥1000Н, разрывная сила поперек ≥1000Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤0C, давление постоянное ≥0,001МПа, теплостойкость ≥80C, сланец серый, крупнозернистая посыпка и полимерная пленка","unit":"м2","qty":825.93,"pm":196.36,"cm":276.7}]},{"code":"1.1.1.1.1.1.4.6","name":"Устройство горизонтальной гидроизоляции кровли / оклеечной / 2-ой слой и последующие","unit":"м2","qty":650.3,"group":"Гидроизоляция кровли","pm":225.81,"ps":325,"cm":364.2,"cs":373.75,"unitMismatch":null,"children":[{"name":"Гидроизоляция ТКП, разрывная сила вдоль ≥1000Н, разрывная сила поперек ≥1000Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤0C, давление постоянное ≥0,001МПа, теплостойкость ≥80C, сланец серый, крупнозернистая посыпка и полимерная пленка","unit":"м2","qty":747.845,"pm":196.36,"cm":316.7}]},{"code":"1.1.1.1.1.1.4.7","name":"Устройство горизонтальной гидроизоляции кровли / оклеечной / 2-ой слой и последующие","unit":"м2","qty":145.1,"group":"Гидроизоляция кровли","pm":225.81,"ps":325,"cm":364.21,"cs":373.75,"unitMismatch":null,"children":[{"name":"Гидроизоляция ТКП, разрывная сила вдоль ≥1000Н, разрывная сила поперек ≥1000Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤0C, давление постоянное ≥0,001МПа, теплостойкость ≥80C, сланец серый, крупнозернистая посыпка и полимерная пленка","unit":"м2","qty":166.865,"pm":196.36,"cm":316.7}]},{"code":"1.1.1.1.1.1.4.8","name":"Устройство горизонтальной гидроизоляции кровли / оклеечной / 2-ой слой и последующие","unit":"м2","qty":1642,"group":"Гидроизоляция кровли","pm":225.81,"ps":325,"cm":364.21,"cs":373.75,"unitMismatch":null,"children":[{"name":"Гидроизоляция ТКП, разрывная сила вдоль ≥1000Н, разрывная сила поперек ≥1000Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤0C, давление постоянное ≥0,001МПа, теплостойкость ≥80C, сланец серый, крупнозернистая посыпка и полимерная пленка","unit":"м2","qty":1888.3,"pm":196.36,"cm":316.7}]},{"code":"1.1.1.1.1.1.4.9","name":"Устройство горизонтальной гидроизоляции кровли / оклеечной / 2-ой слой и последующие","unit":"м2","qty":43.68,"group":"Гидроизоляция кровли","pm":225.81,"ps":325,"cm":415.04,"cs":373.75,"unitMismatch":null,"children":[{"name":"Гидроизоляция ТКП, разрывная сила вдоль ≥1000Н, разрывная сила поперек ≥1000Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤0C, давление постоянное ≥0,001МПа, теплостойкость ≥80C, сланец серый, крупнозернистая посыпка и полимерная пленка","unit":"м2","qty":50.232,"pm":196.36,"cm":360.9}]},{"code":"1.1.1.1.1.1.4.10","name":"Устройство горизонтальной гидроизоляции кровли / оклеечной / 2-ой слой и последующие","unit":"м2","qty":91,"group":"Гидроизоляция кровли","pm":225.81,"ps":325,"cm":475.99,"cs":373.75,"unitMismatch":null,"children":[{"name":"Гидроизоляция ТКП, разрывная сила вдоль ≥1000Н, разрывная сила поперек ≥1000Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤0C, давление постоянное ≥0,001МПа, теплостойкость ≥80C, сланец серый, крупнозернистая посыпка и полимерная пленка","unit":"м2","qty":104.65,"pm":196.36,"cm":413.9}]},{"code":"1.1.1.1.1.1.5.1","name":"Устройство тротуарной плитки на кровле","unit":"м2","qty":263.7,"group":"Покрытие кровли","pm":1059.02,"ps":1213,"cm":1124.42,"cs":1394.95,"unitMismatch":null,"children":[{"name":"Плитка тротуарная 500х500х50мм","unit":"м2","qty":290.07,"pm":862.54,"cm":862.54},{"name":"Подставка под тротуарную плитку_ / регулируемая","unit":"шт","qty":1597,"pm":18.2,"cm":29}]},{"code":"1.1.1.1.1.2.1.1","name":"Огрунтовка поверхности битумным праймером / в 1 слой","unit":"м2","qty":19.2,"group":"Паро- и теплоизоляция вертикальных поверхностей на кровле","pm":59.87,"ps":89,"cm":69.27,"cs":102.35,"unitMismatch":null,"children":[{"name":"Праймер битумный_ / Технониколь №01","unit":"кг","qty":5.376,"pm":213.81,"cm":247.4}]},{"code":"1.1.1.1.1.2.1.2","name":"Огрунтовка поверхности битумным праймером / в 1 слой","unit":"м2","qty":77.2,"group":"Паро- и теплоизоляция вертикальных поверхностей на кровле","pm":59.87,"ps":89,"cm":69.27,"cs":102.35,"unitMismatch":null,"children":[{"name":"Праймер битумный_ / Технониколь №01","unit":"кг","qty":21.616,"pm":213.81,"cm":247.4}]},{"code":"1.1.1.1.1.2.1.3","name":"Огрунтовка поверхности битумным праймером / в 1 слой","unit":"м2","qty":75.1,"group":"Паро- и теплоизоляция вертикальных поверхностей на кровле","pm":59.87,"ps":89,"cm":69.27,"cs":102.35,"unitMismatch":null,"children":[{"name":"Праймер битумный_ / Технониколь №01","unit":"кг","qty":21.028,"pm":213.81,"cm":247.4}]},{"code":"1.1.1.1.1.2.1.4","name":"Огрунтовка поверхности битумным праймером / в 1 слой","unit":"м2","qty":104.7,"group":"Паро- и теплоизоляция вертикальных поверхностей на кровле","pm":59.87,"ps":89,"cm":69.27,"cs":102.35,"unitMismatch":null,"children":[{"name":"Праймер битумный_ / Технониколь №01","unit":"кг","qty":29.316,"pm":213.81,"cm":247.4}]},{"code":"1.1.1.1.1.2.1.5","name":"Огрунтовка поверхности битумным праймером / в 1 слой","unit":"м2","qty":46.2,"group":"Паро- и теплоизоляция вертикальных поверхностей на кровле","pm":59.87,"ps":89,"cm":69.27,"cs":102.35,"unitMismatch":null,"children":[{"name":"Праймер битумный_ / Технониколь №01","unit":"кг","qty":12.936,"pm":213.81,"cm":247.4}]},{"code":"1.1.1.1.1.2.1.6","name":"Устройство вертикальной пароизоляции из рулонных материалов","unit":"м2","qty":46.2,"group":"Паро- и теплоизоляция вертикальных поверхностей на кровле","pm":302.29,"ps":289.01,"cm":276.69,"cs":332.36,"unitMismatch":null,"children":[{"name":"Гидроизоляция ЭПП, разрывная сила вдоль ≥700Н, разрывная сила поперек ≥500Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤-20C, давление в течение 2ч. ≥0,2МПа, теплостойкость ≥100C, полимерная пленка","unit":"м2","qty":53.13,"pm":262.86,"cm":240.6}]},{"code":"1.1.1.1.1.2.1.7","name":"Устройство вертикальной пароизоляции из рулонных материалов","unit":"м2","qty":104.7,"group":"Паро- и теплоизоляция вертикальных поверхностей на кровле","pm":302.29,"ps":289.01,"cm":276.69,"cs":332.36,"unitMismatch":null,"children":[{"name":"Гидроизоляция ЭПП, разрывная сила вдоль ≥700Н, разрывная сила поперек ≥500Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤-20C, давление в течение 2ч. ≥0,2МПа, теплостойкость ≥100C, полимерная пленка","unit":"м2","qty":120.405,"pm":262.86,"cm":240.6}]},{"code":"1.1.1.1.1.2.1.8","name":"Устройство вертикальной пароизоляции из рулонных материалов","unit":"м2","qty":75.1,"group":"Паро- и теплоизоляция вертикальных поверхностей на кровле","pm":302.29,"ps":289.01,"cm":276.69,"cs":332.36,"unitMismatch":null,"children":[{"name":"Гидроизоляция ЭПП, разрывная сила вдоль ≥700Н, разрывная сила поперек ≥500Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤-20C, давление в течение 2ч. ≥0,2МПа, теплостойкость ≥100C, полимерная пленка","unit":"м2","qty":86.365,"pm":262.86,"cm":240.6}]},{"code":"1.1.1.1.1.2.1.9","name":"Устройство вертикальной пароизоляции из рулонных материалов","unit":"м2","qty":77.2,"group":"Паро- и теплоизоляция вертикальных поверхностей на кровле","pm":302.29,"ps":289.01,"cm":276.69,"cs":332.36,"unitMismatch":null,"children":[{"name":"Гидроизоляция ЭПП, разрывная сила вдоль ≥700Н, разрывная сила поперек ≥500Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤-20C, давление в течение 2ч. ≥0,2МПа, теплостойкость ≥100C, полимерная пленка","unit":"м2","qty":88.78,"pm":262.86,"cm":240.6}]},{"code":"1.1.1.1.1.2.1.10","name":"Устройство вертикальной пароизоляции из рулонных материалов","unit":"м2","qty":19.2,"group":"Паро- и теплоизоляция вертикальных поверхностей на кровле","pm":302.29,"ps":289.01,"cm":276.69,"cs":332.36,"unitMismatch":null,"children":[{"name":"Гидроизоляция ЭПП, разрывная сила вдоль ≥700Н, разрывная сила поперек ≥500Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤-20C, давление в течение 2ч. ≥0,2МПа, теплостойкость ≥100C, полимерная пленка","unit":"м2","qty":22.08,"pm":262.86,"cm":240.6}]},{"code":"1.1.1.1.1.2.1.11","name":"Устройство вертикальной теплоизоляции кровли / в 1 слой","unit":"м2","qty":19.2,"group":"Паро- и теплоизоляция вертикальных поверхностей на кровле","pm":734.5,"ps":501.01,"cm":791.37,"cs":576.16,"unitMismatch":null,"children":[{"name":"Дюбель тарельчатый_","unit":"шт","qty":153.6,"pm":15.25,"cm":15.25},{"name":"Плита теплоизоляционная минераловатная_ / ТЕХНОРУФ Н ОПТИМА / 1200-600-100 мм","unit":"м3","qty":1.978,"pm":5945.41,"cm":6497.4}]},{"code":"1.1.1.1.1.2.1.12","name":"Устройство вертикальной теплоизоляции кровли / в 1 слой","unit":"м2","qty":75.1,"group":"Паро- и теплоизоляция вертикальных поверхностей на кровле","pm":431.15,"ps":501.01,"cm":459.85,"cs":576.16,"unitMismatch":null,"children":[{"name":"Плита теплоизоляционная минераловатная_ / ТЕХНОРУФ Н ОПТИМА / 1200-600-50 мм","unit":"м3","qty":3.905,"pm":5945.41,"cm":6497.4},{"name":"Дюбель тарельчатый_","unit":"шт","qty":600.8,"pm":15.25,"cm":15.25}]},{"code":"1.1.1.1.1.2.1.13","name":"Устройство вертикальной теплоизоляции кровли / в 1 слой","unit":"м2","qty":104.7,"group":"Паро- и теплоизоляция вертикальных поверхностей на кровле","pm":734.37,"ps":501.01,"cm":791.23,"cs":576.16,"unitMismatch":null,"children":[{"name":"Дюбель тарельчатый_","unit":"шт","qty":837.6,"pm":15.25,"cm":15.25},{"name":"Плита теплоизоляционная минераловатная_ / ТЕХНОРУФ Н ОПТИМА / 1200-600-100 мм","unit":"м3","qty":10.784,"pm":5945.41,"cm":6497.4}]},{"code":"1.1.1.1.1.2.1.14","name":"Устройство вертикальной теплоизоляции кровли / в 1 слой","unit":"м2","qty":46.2,"group":"Паро- и теплоизоляция вертикальных поверхностей на кровле","pm":731.58,"ps":501.01,"cm":531.39,"cs":576.16,"unitMismatch":null,"children":[{"name":"Плита теплоизоляционная минераловатная НГ, ρ=100-130кг/м3, прочность на сжатие не менее 30кПа, λБ=0,041Вт/мС - 60мм","unit":"м3","qty":2.911,"pm":9674.55,"cm":6497.4},{"name":"Дюбель тарельчатый_","unit":"шт","qty":369.6,"pm":15.25,"cm":15.25}]},{"code":"1.1.1.1.1.2.1.15","name":"Устройство вертикальной теплоизоляции кровли / в 2 слоя","unit":"м2","qty":77.2,"group":"Паро- и теплоизоляция вертикальных поверхностей на кровле","pm":1278,"ps":847,"cm":1415.1,"cs":974.05,"unitMismatch":null,"children":[{"name":"Плита теплоизоляционная минераловатная_ / ТЕХНОРУФ Н ОПТИМА / 1200-600-120мм","unit":"м3","qty":9.573,"pm":5945.41,"cm":6497.4},{"name":"Плита теплоизоляционная минераловатная_ / ТЕХНОРУФ В ЭКСТРА / 1200-600-40мм","unit":"м3","qty":3.165,"pm":9470.25,"cm":11144.7},{"name":"Дюбель тарельчатый_","unit":"шт","qty":772,"pm":15.25,"cm":15.25}]},{"code":"1.1.1.1.1.2.2.1","name":"Устройство облицовки из ЦСП / в 1 слой с двухсторонней огрунтовкой","unit":"м2","qty":46.2,"group":"Устройство облицовки","pm":626.11,"ps":425,"cm":658.87,"cs":488.75,"unitMismatch":null,"children":[{"name":"Праймер битумный_ / Технониколь №01","unit":"кг","qty":13.86,"pm":213.81,"cm":247.4},{"name":"Плита цементно-стружечная 10мм","unit":"м2","qty":50.82,"pm":510.88,"cm":531.5}]},{"code":"1.1.1.1.1.2.2.2","name":"Устройство облицовки из ЦСП / в 1 слой с двухсторонней огрунтовкой","unit":"м2","qty":104.7,"group":"Устройство облицовки","pm":626.11,"ps":425,"cm":658.87,"cs":488.75,"unitMismatch":null,"children":[{"name":"Плита цементно-стружечная 10мм","unit":"м2","qty":115.17,"pm":510.88,"cm":531.5},{"name":"Праймер битумный_ / Технониколь №01","unit":"кг","qty":31.41,"pm":213.81,"cm":247.4}]},{"code":"1.1.1.1.1.2.2.3","name":"Устройство облицовки из ЦСП / в 1 слой с двухсторонней огрунтовкой","unit":"м2","qty":77.2,"group":"Устройство облицовки","pm":626.11,"ps":425,"cm":658.87,"cs":488.75,"unitMismatch":null,"children":[{"name":"Праймер битумный_ / Технониколь №01","unit":"кг","qty":23.16,"pm":213.81,"cm":247.4},{"name":"Плита цементно-стружечная 10мм","unit":"м2","qty":84.92,"pm":510.88,"cm":531.5}]},{"code":"1.1.1.1.1.2.2.4","name":"Устройство облицовки из ЦСП / в 1 слой с двухсторонней огрунтовкой","unit":"м2","qty":19.2,"group":"Устройство облицовки","pm":626.11,"ps":425,"cm":658.87,"cs":488.75,"unitMismatch":null,"children":[{"name":"Плита цементно-стружечная 10мм","unit":"м2","qty":21.12,"pm":510.88,"cm":531.5},{"name":"Праймер битумный_ / Технониколь №01","unit":"кг","qty":5.76,"pm":213.81,"cm":247.4}]},{"code":"1.1.1.1.1.2.2.5","name":"Устройство облицовки из ЦСП / в 2 слоя с двухсторонней огрунтовкой каждого слоя","unit":"м2","qty":75.1,"group":"Устройство облицовки","pm":1337.75,"ps":701,"cm":1416.7,"cs":806.15,"unitMismatch":null,"children":[{"name":"Плита цементно-стружечная 10мм","unit":"м2","qty":165.22,"pm":510.88,"cm":531.5},{"name":"Праймер битумный_ / ТехноНиколь № 01 ведро 20 л(16 кг)","unit":"кг","qty":75.1,"pm":213.81,"cm":247.4}]},{"code":"1.1.1.1.1.2.3.1","name":"Устройство вертикальной гидроизоляции с учетом примыканий / оклеечной / 1-ый слой","unit":"м2","qty":46.2,"group":"Гидроизоляция вертикальных поверхностей на кровле","pm":445.18,"ps":419,"cm":332.04,"cs":481.85,"unitMismatch":null,"children":[{"name":"Гидроизоляция ЭПМ, разрывная сила вдоль ≥800Н, разрывная сила поперек ≥800Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤-25C, давление в течение 2ч. ≥0,2МПа, теплостойкость ≥100C, крупнофракционный песок снизу и полимерное покрытие сверху","unit":"м2","qty":55.44,"pm":370.98,"cm":276.7}]},{"code":"1.1.1.1.1.2.3.2","name":"Устройство вертикальной гидроизоляции с учетом примыканий / оклеечной / 1-ый слой","unit":"м2","qty":104.7,"group":"Гидроизоляция вертикальных поверхностей на кровле","pm":445.18,"ps":419,"cm":332.04,"cs":481.85,"unitMismatch":null,"children":[{"name":"Гидроизоляция ЭПМ, разрывная сила вдоль ≥800Н, разрывная сила поперек ≥800Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤-25C, давление в течение 2ч. ≥0,2МПа, теплостойкость ≥100C, крупнофракционный песок снизу и полимерное покрытие сверху","unit":"м2","qty":125.64,"pm":370.98,"cm":276.7}]},{"code":"1.1.1.1.1.2.3.3","name":"Устройство вертикальной гидроизоляции с учетом примыканий / оклеечной / 1-ый слой","unit":"м2","qty":75.1,"group":"Гидроизоляция вертикальных поверхностей на кровле","pm":445.18,"ps":419,"cm":332.04,"cs":481.85,"unitMismatch":null,"children":[{"name":"Гидроизоляция ЭПМ, разрывная сила вдоль ≥800Н, разрывная сила поперек ≥800Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤-25C, давление в течение 2ч. ≥0,2МПа, теплостойкость ≥100C, крупнофракционный песок снизу и полимерное покрытие сверху","unit":"м2","qty":90.12,"pm":370.98,"cm":276.7}]},{"code":"1.1.1.1.1.2.3.4","name":"Устройство вертикальной гидроизоляции с учетом примыканий / оклеечной / 1-ый слой","unit":"м2","qty":77.2,"group":"Гидроизоляция вертикальных поверхностей на кровле","pm":445.18,"ps":419,"cm":332.04,"cs":481.85,"unitMismatch":null,"children":[{"name":"Гидроизоляция ЭПМ, разрывная сила вдоль ≥800Н, разрывная сила поперек ≥800Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤-25C, давление в течение 2ч. ≥0,2МПа, теплостойкость ≥100C, крупнофракционный песок снизу и полимерное покрытие сверху","unit":"м2","qty":92.64,"pm":370.98,"cm":276.7}]},{"code":"1.1.1.1.1.2.3.5","name":"Устройство вертикальной гидроизоляции с учетом примыканий / оклеечной / 1-ый слой","unit":"м2","qty":19.2,"group":"Гидроизоляция вертикальных поверхностей на кровле","pm":445.18,"ps":419,"cm":380.04,"cs":481.85,"unitMismatch":null,"children":[{"name":"Гидроизоляция ЭПМ, разрывная сила вдоль ≥800Н, разрывная сила поперек ≥800Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤-25C, давление в течение 2ч. ≥0,2МПа, теплостойкость ≥100C, крупнофракционный песок снизу и полимерное покрытие сверху","unit":"м2","qty":23.04,"pm":370.98,"cm":316.7}]},{"code":"1.1.1.1.1.2.3.6","name":"Устройство вертикальной гидроизоляции с учетом примыканий / оклеечной / 2-ой слой и последующие","unit":"м2","qty":19.2,"group":"Гидроизоляция вертикальных поверхностей на кровле","pm":249.54,"ps":409.01,"cm":358.8,"cs":470.36,"unitMismatch":null,"children":[{"name":"Гидроизоляция ЭПП, разрывная сила вдоль ≥550Н, разрывная сила поперек -Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤-10C, давление в течение 2ч. ≥0,2МПа, теплостойкость ≥85C, полимерная пленка","unit":"м2","qty":23.04,"pm":207.95,"cm":299}]},{"code":"1.1.1.1.1.2.3.7","name":"Устройство вертикальной гидроизоляции с учетом примыканий / оклеечной / 2-ой слой и последующие","unit":"м2","qty":77.2,"group":"Гидроизоляция вертикальных поверхностей на кровле","pm":249.54,"ps":409.01,"cm":380.04,"cs":470.36,"unitMismatch":null,"children":[{"name":"Гидроизоляция ЭПП, разрывная сила вдоль ≥550Н, разрывная сила поперек -Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤-10C, давление в течение 2ч. ≥0,2МПа, теплостойкость ≥85C, полимерная пленка","unit":"м2","qty":92.64,"pm":207.95,"cm":316.7}]},{"code":"1.1.1.1.1.2.3.8","name":"Устройство вертикальной гидроизоляции с учетом примыканий / оклеечной / 2-ой слой и последующие","unit":"м2","qty":75.1,"group":"Гидроизоляция вертикальных поверхностей на кровле","pm":249.54,"ps":409.01,"cm":380.04,"cs":470.36,"unitMismatch":null,"children":[{"name":"Гидроизоляция ЭПП, разрывная сила вдоль ≥550Н, разрывная сила поперек -Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤-10C, давление в течение 2ч. ≥0,2МПа, теплостойкость ≥85C, полимерная пленка","unit":"м2","qty":90.12,"pm":207.95,"cm":316.7}]},{"code":"1.1.1.1.1.2.3.9","name":"Устройство вертикальной гидроизоляции с учетом примыканий / оклеечной / 2-ой слой и последующие","unit":"м2","qty":104.7,"group":"Гидроизоляция вертикальных поверхностей на кровле","pm":249.54,"ps":409.01,"cm":380.04,"cs":470.36,"unitMismatch":null,"children":[{"name":"Гидроизоляция ЭПП, разрывная сила вдоль ≥550Н, разрывная сила поперек -Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤-10C, давление в течение 2ч. ≥0,2МПа, теплостойкость ≥85C, полимерная пленка","unit":"м2","qty":125.64,"pm":207.95,"cm":316.7}]},{"code":"1.1.1.1.1.2.3.10","name":"Устройство вертикальной гидроизоляции с учетом примыканий / оклеечной / 2-ой слой и последующие","unit":"м2","qty":46.2,"group":"Гидроизоляция вертикальных поверхностей на кровле","pm":249.54,"ps":409.01,"cm":380.04,"cs":470.36,"unitMismatch":null,"children":[{"name":"Гидроизоляция ЭПП, разрывная сила вдоль ≥550Н, разрывная сила поперек -Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤-10C, давление в течение 2ч. ≥0,2МПа, теплостойкость ≥85C, полимерная пленка","unit":"м2","qty":55.44,"pm":207.95,"cm":316.7}]},{"code":"1.1.1.1.1.2.3.11","name":"Установка краевой рейки с герметизацией шва","unit":"пог. м","qty":326.46,"group":"Гидроизоляция вертикальных поверхностей на кровле","pm":103.52,"ps":148,"cm":364.38,"cs":170.2,"unitMismatch":null,"children":[{"name":"Герметик полиуретановый Технониколь_ / 600 мл/0,7 кг","unit":"шт","qty":97.938,"pm":345.05,"cm":499.6},{"name":"Рейка краевая ТН / оцинкованная","unit":"пог. м","qty":359.106,"pm":0,"cm":195}]},{"code":"1.1.1.1.1.2.3.12","name":"Устройство узла примыкания гидроизоляции к конструкциям с обжимным хомутом","unit":"шт","qty":60,"group":"Гидроизоляция вертикальных поверхностей на кровле","pm":1418.94,"ps":207,"cm":1472.64,"cs":238.05,"unitMismatch":null,"children":[{"name":"Мастика_ / Технониколь / №71","unit":"кг","qty":6,"pm":302.32,"cm":278.6},{"name":"Резина ЭПДМ_","unit":"шт","qty":60,"pm":1227.11,"cm":1263.92},{"name":"Обжимной хомут_","unit":"шт","qty":60,"pm":127.09,"cm":130.9},{"name":"Герметик полиуретановый Технониколь_ / 600 мл/0,7 кг","unit":"шт","qty":6,"pm":345.05,"cm":499.6}]},{"code":"1.1.1.1.1.3.1","name":"Устройство молниезащитной сетки, заземления","unit":"пог. м","qty":1410,"group":"Установка металлических изделий","pm":86.93,"ps":257.01,"cm":86.93,"cs":295.56,"unitMismatch":null,"children":[{"name":"Пруток-катанка горячеоцинкованный_ / d 8 мм","unit":"пог. м","qty":1410,"pm":86.93,"cm":86.93}]},{"code":"1.1.1.1.1.3.2","name":"Монтаж фартуков, отливов и компенсаторов с учетом крепления","unit":"м2","qty":328.9,"group":"Установка металлических изделий","pm":627.36,"ps":907,"cm":3177.61,"cs":1043.05,"unitMismatch":null,"children":[{"name":"Лист оцинкованный окрашенный_ / 0,7/0,8мм","unit":"м2","qty":361.79,"pm":570.33,"cm":1870.88},{"name":"Костыль типовой К-2/360/180/4","unit":"шт","qty":982,"pm":0,"cm":375}]},{"code":"1.1.1.1.1.4.1","name":"Устройство профилированной мембраны / в 2 слоя","unit":"м2","qty":99.1,"group":"Фундаменты под оборудование","pm":229.46,"ps":380.01,"cm":229.46,"cs":437.01,"unitMismatch":null,"children":[{"name":"Мембрана профилированная_ / PLANTER standart (рулон 2*20м)","unit":"м2","qty":218.02,"pm":104.3,"cm":104.3}]},{"code":"1.1.1.1.1.4.2","name":"Устройство горизонтальной гидроизоляции кровли / оклеечной / 1-ый слой","unit":"м2","qty":99.1,"group":"Фундаменты под оборудование","pm":239.14,"ps":384,"cm":318.21,"cs":441.6,"unitMismatch":null,"children":[{"name":"Гидроизоляция ЭПП, разрывная сила вдоль ≥550Н, разрывная сила поперек -Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤-10C, давление в течение 2ч. ≥0,2МПа, теплостойкость ≥85C, полимерная пленка","unit":"м2","qty":113.965,"pm":207.95,"cm":276.7}]},{"code":"1.1.1.1.1.4.3","name":"Устройство горизонтальной гидроизоляции кровли / оклеечной / 2-ой слой и последующие","unit":"м2","qty":99.1,"group":"Фундаменты под оборудование","pm":225.81,"ps":325,"cm":364.21,"cs":373.75,"unitMismatch":null,"children":[{"name":"Гидроизоляция ТКП, разрывная сила вдоль ≥1000Н, разрывная сила поперек ≥1000Н, водопоглащение в течение 24ч. ≤1%, гибкость на брусе ≤0C, давление постоянное ≥0,001МПа, теплостойкость ≥80C, сланец серый, крупнозернистая посыпка и полимерная пленка","unit":"м2","qty":113.965,"pm":196.36,"cm":316.7}]},{"code":"1.1.1.1.1.4.4","name":"Устройство монолитного ж/б фундамента под оборудование","unit":"м3","qty":21.3,"group":"Фундаменты под оборудование","pm":6477.25,"ps":17674.01,"cm":7351.18,"cs":20325.11,"unitMismatch":null,"children":[{"name":"Бетон B15, щебень гравийный фр. 5-20мм","unit":"м3","qty":21.62,"pm":5781.89,"cm":5781.89},{"name":"Сетка металлическая с учетом крепежных материалов_","unit":"м2","qty":107.4,"pm":120.68,"cm":294}]},{"code":"1.1.1.1.1.5.1","name":"Монтаж водосточной кровельной воронки, включая устройство опорной рамы","unit":"шт","qty":23,"group":"Прочие работы","pm":0,"ps":2971.01,"cm":30597.89,"cs":3416.66,"unitMismatch":null,"children":[{"name":"Воронка водосточная / HL 64.1 / 75","unit":"шт","qty":23,"pm":0,"cm":19527.69},{"name":"Переходник для воронок / с ПВХ/ПП на чугун HL9/1 / 110х133","unit":"шт","qty":23,"pm":0,"cm":2453.64},{"name":"Надставной элемент_ / HL65Н / 110 мм","unit":"шт","qty":23,"pm":0,"cm":8470.56},{"name":"Хомут соединительный_ / RAPDI W2  / 100 мм","unit":"шт","qty":23,"pm":0,"cm":146}]},{"code":"1.1.1.1.1.5.2","name":"Установка аэратора","unit":"шт","qty":21,"group":"Прочие работы","pm":979.87,"ps":823,"cm":1130,"cs":946.45,"unitMismatch":null,"children":[{"name":"Аэратор D160/110/340/460/Для плоской кровли/Черный","unit":"шт","qty":21,"pm":979.87,"cm":1130}]},{"code":"1.1.1.2.1.1.1.1","name":"Прокладка трубопроводов из чугунных труб безраструбных","unit":"м","qty":16.02,"group":"Прокладка трубопроводов","pm":0,"ps":1988,"cm":1024.71,"cs":1739.95,"unitMismatch":null,"children":[{"name":"Трубопровод водоотведения из чугунных труб с учетом фасонных и соединительных элементов, с учетом гильз, креплений / 100 мм","unit":"пог. м","qty":17.02,"pm":0,"cm":964.5}]}]};
+</script>
+<script>
+(function(){
+var $=function(id){return document.getElementById(id);};
+var nf=new Intl.NumberFormat('ru-RU',{maximumFractionDigits:0});
+var qf=new Intl.NumberFormat('ru-RU',{maximumFractionDigits:2});
+var money=function(n){return nf.format(Math.round(n));};
+var mln=function(n){return (n/1e6).toLocaleString('ru-RU',{minimumFractionDigits:2,maximumFractionDigits:2})+' млн ₽';};
+var pct=function(x){return (x*100).toLocaleString('ru-RU',{minimumFractionDigits:1,maximumFractionDigits:1})+'%';};
+var pad=function(n){return (n<10?'0':'')+n;};
+var dt=function(t){var d=new Date(t);return pad(d.getUTCDate())+'.'+pad(d.getUTCMonth()+1)+'.'+d.getUTCFullYear();};
+var esc=function(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});};
+var sgn=function(n){return (n>0?'+':n<0?'−':'')+mln(Math.abs(n));};
+
+function nextMonth(){var n=new Date();var y=n.getFullYear(),m=n.getMonth()+1;m++;if(m>12){m=1;y++;}return y+'-'+pad(m)+'-01';}
+var DEF={start:nextMonth(),crew:12,rate:6000,labor:50,ovh:10,vat:22,fix:false,k:0.01};
+var S={model:null,label:'',P:Object.assign({},DEF),lags:{},tab:'fin',col:null,res:null};
+
+function load(){try{var j=JSON.parse(localStorage.getItem('krovlya.params')||'null');if(j)Object.keys(DEF).forEach(function(k){if(j[k]!==undefined&&j[k]!==null)S.P[k]=j[k];});}catch(e){}}
+function save(){try{localStorage.setItem('krovlya.params',JSON.stringify(S.P));}catch(e){}}
+function toUI(){var P=S.P;$('p-start').value=P.start;$('p-crew').value=P.crew;$('p-rate').value=P.rate;$('p-labor').value=P.labor;$('p-ovh').value=P.ovh;$('p-vat').value=P.vat;}
+function fromUI(){
+  var P=S.P,n=function(id,d){var v=parseFloat($(id).value);return isFinite(v)?v:d;};
+  var s=$('p-start').value; if(/^\d{4}-\d{2}-\d{2}$/.test(s)) P.start=s;
+  P.crew=Math.max(1,n('p-crew',DEF.crew)); P.rate=Math.max(1,n('p-rate',DEF.rate));
+  P.labor=Math.min(100,Math.max(0,n('p-labor',DEF.labor))); P.ovh=Math.max(0,n('p-ovh',DEF.ovh)); P.vat=Math.max(0,n('p-vat',DEF.vat));
+}
+function calcP(){var P=S.P,p=P.start.split('-');
+  return {start:Date.UTC(+p[0],+p[1]-1,+p[2]),crew:P.crew,rate:P.rate,labor:P.labor/100,ovh:P.ovh/100,vat:P.vat/100,fixUnits:P.fix,unitK:P.k};}
+
+function msg(t,err){var m=$('msg');m.textContent=t||'';m.className='msg'+(err?' err':'');}
+
+/* ---------- отрисовка ---------- */
+function fig(k,v,n,cls){return '<div class="fig"><div class="k">'+k+'</div><div class="v '+(cls||'')+'">'+v+'</div><div class="n">'+n+'</div></div>';}
+function renderFigs(R){
+  var T=R.T,sc=R.sched,pl=R.pl;
+  $('figs').innerHTML=
+    fig('Итого по ТКП, с НДС',mln(T.total),'материалы '+mln(T.mat)+' · СМР '+mln(T.smr))+
+    fig('Относительно ПСПР',sgn(T.diff),'ПСПР '+mln(T.limit)+' · '+(T.limit?(T.diff>0?'+':'')+pct(T.diff/T.limit):'—'),T.diff>0?'over':'good')+
+    fig('Срок работ',sc.workDays+' раб. дн.','до '+dt(sc.end)+' · '+sc.weeks+' нед.')+
+    fig('Прибыль до налогов',mln(pl.profit),'рентабельность '+pct(pl.margin)+' от выручки без НДС',pl.profit<0?'bad':'');
+}
+function renderWarns(R){
+  var h='';
+  if(R.mismatch.length){
+    var r=R.mismatch[0],unf=r.cm/r.f;
+    var unit=r.w.unit;
+    h+='<div class="warn"><strong>Похоже на ошибку единиц в ТКП</strong>'+
+      '<p>В позиции «'+esc(r.w.name)+'» материал «'+esc(r.w.unitMismatch.child)+'» посчитан в м³, но его количество ('+qf.format(r.w.qty)+') равно объёму работ в '+esc(unit)+'. Цена за м³ умножена на '+esc(unit)+'. По этой позиции в вашей цене '+money(unf)+' ₽, это '+pct(unf/(R.T.total+unf-r.cm))+' итога.</p>'+
+      '<div class="row"><label><input type="checkbox" id="fix" '+(S.P.fix?'checked':'')+'> Считать с исправлением</label>'+
+      '<label>м³ на 1 '+esc(unit)+': <input type="number" id="fixk" step="0.001" min="0" value="'+S.P.k+'"></label></div>'+
+      '<p style="font-size:12px;color:var(--muted)">0,01 подходит для галтели 100×100 мм. Проверьте сечение по чертежу. Лучше уточнить у заказчика до подачи цены: та же ошибка может быть и в его ПСПР.</p></div>';
+  }
+  if(R.cust.length){
+    var top=R.cust.slice().sort(function(a,b){return b.sum-a.sum;}).slice(0,4).map(function(x){return esc(x.name.split('/')[0].replace(/_$/,'').trim());});
+    h+='<div class="warn"><strong>Возможно, материал даёт заказчик</strong>'+
+      '<p>В ПСПР у '+R.cust.length+' материалов цена 0 (например: '+top.join(', ')+'), а в вашей цене они учтены на '+mln(R.custSum)+'. Уточните, чьи это материалы, иначе цена выйдет выше предельной.</p></div>';
+  }
+  $('warns').innerHTML=h;
+  var f=$('fix'); if(f) f.onchange=function(){S.P.fix=f.checked;save();render();};
+  var k=$('fixk'); if(k) k.onchange=function(){var v=parseFloat(k.value);if(isFinite(v)&&v>=0){S.P.k=v;save();render();}};
+}
+function viewFin(R){
+  var h='<div class="scroll"><table><thead><tr><th class="l">Этап</th><th>Материалы</th><th>СМР</th><th>Итого</th><th>ПСПР</th><th>Откл., ₽</th><th>Откл., %</th></tr></thead><tbody>';
+  R.stages.forEach(function(s){
+    h+='<tr><td class="name">'+esc(s.name)+'</td><td>'+money(s.mat)+'</td><td>'+money(s.smr)+'</td><td>'+money(s.total)+'</td><td>'+money(s.limit)+'</td><td class="'+(s.diff>0?'over':'')+'">'+money(s.diff)+'</td><td class="'+(s.diff>0?'over':'')+'">'+(s.limit?pct(s.diff/s.limit):'—')+'</td></tr>';
+  });
+  var T=R.T;
+  h+='<tr class="tot"><td>Итого</td><td>'+money(T.mat)+'</td><td>'+money(T.smr)+'</td><td>'+money(T.total)+'</td><td>'+money(T.limit)+'</td><td>'+money(T.diff)+'</td><td>'+(T.limit?pct(T.diff/T.limit):'—')+'</td></tr></tbody></table></div>';
+  var pl=R.pl;
+  h+='<h2 style="margin-top:18px">Прибыль и рентабельность</h2><div class="scroll"><table style="max-width:560px"><tbody>'+
+    [['Выручка по ТКП, с НДС',pl.rev],['НДС',pl.vatSum],['Выручка без НДС',pl.revNet],['Материалы без НДС',pl.matNet],['СМР без НДС',pl.smrNet],['Оплата труда',pl.labor],['Накладные расходы',pl.ovh]]
+    .map(function(a){return '<tr><td class="l">'+a[0]+'</td><td>'+money(a[1])+'</td></tr>';}).join('')+
+    '<tr class="tot"><td class="l">Прибыль до налогов</td><td>'+money(pl.profit)+'</td></tr><tr class="tot"><td class="l">Рентабельность</td><td>'+pct(pl.margin)+'</td></tr></tbody></table></div>'+
+    '<p class="note">Материалы считаются по ценам из ТКП, без наценки. Налог на прибыль или УСН не вычтен.</p>';
+  return h;
+}
+function viewGantt(R){
+  var st=R.stages,sc=R.sched;
+  var h='<div class="scroll"><table><thead><tr><th class="l">Этап</th><th>Чел.-дн.</th><th>Раб. дн.</th><th>Начало</th><th>Окончание</th><th>Сдвиг, дн.</th></tr></thead><tbody>';
+  st.forEach(function(s,i){
+    h+='<tr><td class="name">'+(i+1)+'. '+esc(s.name)+'</td><td>'+qf.format(Math.round(s.laborDays*10)/10)+'</td><td>'+s.dur+'</td><td>'+dt(s.start)+'</td><td>'+dt(s.end)+'</td><td><input class="lag" type="number" step="1" data-stage="'+esc(s.name)+'" value="'+(S.lags[s.name]||0)+'" aria-label="Сдвиг этапа '+esc(s.name)+'"></td></tr>';
+  });
+  h+='<tr class="tot"><td>Весь срок</td><td>'+qf.format(Math.round(sc.laborDays*10)/10)+'</td><td>'+sc.workDays+'</td><td>'+dt(sc.start)+'</td><td>'+dt(sc.end)+'</td><td></td></tr></tbody></table></div>';
+  h+='<p class="note">Этапы идут один за другим, одной бригадой. Чтобы этап начался раньше, поставьте отрицательный сдвиг; чтобы позже, положительный (в рабочих днях).</p>';
+  /* диаграмма */
+  var avail=Math.max(0,($('view').clientWidth||360)-(window.innerWidth<=560?120:170)-4);
+  var nd=Math.round((sc.end-sc.start)/DAY)+16, dw=Math.max(window.innerWidth<=560?5:6,Math.min(12,Math.floor(avail/nd))),t0=sc.start-((new Date(sc.start).getUTCDay()+6)%7)*DAY,t1=sc.end+8*DAY,days=Math.round((t1-t0)/DAY),w=days*dw;
+  var mons='',d=new Date(t0),y=d.getUTCFullYear(),m=d.getUTCMonth(),names=['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'];
+  for(;;){var ms=Date.UTC(y,m,1);if(ms>t1)break;var x=Math.max(0,(ms-t0)/DAY*dw);if(ms<t0&&(Date.UTC(y,m+1,1)-t0)/DAY<6){m++;if(m>11){m=0;y++;}continue;}mons+='<div class="g-mon" style="left:'+x+'px">'+names[m]+' '+String(y).slice(2)+'</div>';m++;if(m>11){m=0;y++;}}
+  h+='<h2 style="margin-top:18px">Диаграмма Ганта</h2><div class="scroll"><div class="gantt" style="--dw:'+dw+'px;width:max-content;min-width:100%">'+
+     '<div class="g-row g-head"><div class="g-lab"></div><div class="g-track" style="width:'+w+'px">'+mons+'</div></div>';
+  st.forEach(function(s,i){
+    var left=(s.start-t0)/DAY*dw,wd=((s.end-s.start)/DAY+1)*dw;
+    h+='<div class="g-row"><div class="g-lab">'+(i+1)+'. '+esc(s.name)+'</div><div class="g-track" style="width:'+w+'px"><div class="g-bar" style="left:'+left+'px;width:'+wd+'px" title="'+dt(s.start)+' – '+dt(s.end)+'">'+(wd>=52?s.dur+' дн.':'')+'</div></div></div>';
+  });
+  h+='</div></div><p class="note">Вертикальные линии — начало каждой недели.</p>';
+  return h;
+}
+function sortedRows(R){return R.rows.map(function(r,i){return {r:r,i:i,k:stageRank(r.w.group)};}).sort(function(a,b){return a.k-b.k||a.i-b.i;}).map(function(x){return x.r;});}
+function viewEst(R){
+  var h='<div class="scroll" style="max-height:70vh"><table><thead><tr><th>№</th><th class="l">Наименование работ</th><th>Ед.</th><th>Объём</th><th>Цена мат.</th><th>Цена СМР</th><th>Итого</th><th>ПСПР</th><th>Откл.</th></tr></thead><tbody>';
+  var last='',n=0;
+  sortedRows(R).forEach(function(r){
+    var w=r.w;
+    if(w.group!==last){last=w.group;h+='<tr class="tot"><td colspan="9" class="l">'+esc(last)+'</td></tr>';}
+    n++;
+    h+='<tr class="'+(w.unitMismatch&&!S.P.fix?'flag':'')+'"><td>'+n+'</td><td class="name">'+esc(w.name)+'</td><td>'+esc(w.unit)+'</td><td>'+qf.format(w.qty)+'</td><td>'+qf.format(w.cm*r.f)+'</td><td>'+qf.format(w.cs)+'</td><td>'+money(r.total)+'</td><td>'+money(r.limit)+'</td><td class="'+(r.diff>0?'over':'')+'">'+money(r.diff)+'</td></tr>';
+  });
+  h+='<tr class="tot"><td></td><td class="l">Итого</td><td></td><td></td><td></td><td></td><td>'+money(R.T.total)+'</td><td>'+money(R.T.limit)+'</td><td>'+money(R.T.diff)+'</td></tr></tbody></table></div><p class="note">Цены с НДС. Итого = объём × (цена материала + цена СМР). Подсвеченная строка — возможная ошибка единиц.</p>';
+  return h;
+}
+function viewMat(R){
+  var list=matList(R.rows),sum=0;
+  var h='<div class="scroll" style="max-height:70vh"><table><thead><tr><th>№</th><th class="l">Материал</th><th>Ед.</th><th>Количество</th><th>Цена</th><th>Сумма</th></tr></thead><tbody>';
+  list.forEach(function(m,i){sum+=m.sum;h+='<tr><td>'+(i+1)+'</td><td class="name">'+esc(m.name)+'</td><td>'+esc(m.unit)+'</td><td>'+qf.format(m.qty)+'</td><td>'+qf.format(m.price)+'</td><td>'+money(m.sum)+'</td></tr>';});
+  h+='<tr class="tot"><td></td><td class="l">Итого</td><td></td><td></td><td></td><td>'+money(sum)+'</td></tr></tbody></table></div><p class="note">Для закупки. Сумма может отличаться от сметы на доли процента из-за округлений в ТКП.</p>';
+  return h;
+}
+function render(){
+  if(!S.model) return;
+  var R=S.res=compute(S.model,calcP(),S.lags);
+  $('obj').textContent=S.label;
+  renderFigs(R); renderWarns(R);
+  var v=$('view');
+  v.innerHTML=S.tab==='fin'?viewFin(R):S.tab==='gantt'?viewGantt(R):S.tab==='est'?viewEst(R):viewMat(R);
+  Array.prototype.forEach.call(document.querySelectorAll('.tab'),function(b){b.setAttribute('aria-selected',b.getAttribute('data-tab')===S.tab?'true':'false');});
+  Array.prototype.forEach.call(v.querySelectorAll('input.lag'),function(i){i.onchange=function(){var x=parseInt(i.value,10);S.lags[i.getAttribute('data-stage')]=isFinite(x)?x:0;render();};});
+}
+
+/* ---------- загрузка файла ---------- */
+function setModel(m,label){S.model=m;S.label=label;S.lags={};render();}
+function onFile(f){
+  msg('Читаю файл…');
+  var rd=new FileReader();
+  rd.onerror=function(){msg('Не удалось прочитать файл.',true);};
+  rd.onload=function(e){
+    try{
+      if(!window.XLSX) throw new Error('Не загрузилась библиотека чтения Excel. Проверьте интернет и обновите страницу.');
+      var wb=XLSX.read(new Uint8Array(e.target.result),{type:'array'});
+      var name=wb.SheetNames.indexOf('ТКП')>=0?'ТКП':wb.SheetNames[0];
+      var aoa=XLSX.utils.sheet_to_json(wb.Sheets[name],{header:1,defval:null,raw:true});
+      var m=parseTKP(aoa);
+      S.col=m.cands[0].col; m.company=m.cands[0].name; applyContractor(m,S.col);
+      var sel=$('p-cand');
+      sel.innerHTML=m.cands.map(function(c){return '<option value="'+c.col+'">'+esc(c.name)+'</option>';}).join('');
+      $('candBox').hidden=m.cands.length<2;
+      sel.onchange=function(){S.col=+sel.value;m.company=sel.options[sel.selectedIndex].text;applyContractor(m,S.col);setModel(m,label(m,f.name));};
+      setModel(m,label(m,f.name));
+      msg('Загружено: '+m.works.length+' работ из '+f.name+'.');
+    }catch(err){msg(err.message||String(err),true);}
+  };
+  rd.readAsArrayBuffer(f);
+}
+function label(m,fname){return (m.obj?m.obj.replace(/\s+/g,' ').slice(0,110)+' · ':'')+'цены «'+m.company+'» · '+m.works.length+' работ · '+fname;}
+
+/* ---------- Excel ---------- */
+function exportXlsx(){
+  var R=S.res; if(!R) return;
+  if(!window.XLSX){msg('Библиотека Excel не загрузилась. Обновите страницу.',true);return;}
+  var wb=XLSX.utils.book_new(),r0=Math.round;
+  var fin=[['Финансовый отчёт по кровельным работам'],[S.label],[],['Этап','Материалы','СМР','Итого','ПСПР','Откл., ₽','Откл., %']];
+  R.stages.forEach(function(s){fin.push([s.name,r0(s.mat),r0(s.smr),r0(s.total),r0(s.limit),r0(s.diff),s.limit?+(s.diff/s.limit).toFixed(4):0]);});
+  fin.push(['ИТОГО',r0(R.T.mat),r0(R.T.smr),r0(R.T.total),r0(R.T.limit),r0(R.T.diff),R.T.limit?+(R.T.diff/R.T.limit).toFixed(4):0],[],
+    ['Прибыль и рентабельность'],['Выручка по ТКП, с НДС',r0(R.pl.rev)],['НДС',r0(R.pl.vatSum)],['Выручка без НДС',r0(R.pl.revNet)],['Материалы без НДС',r0(R.pl.matNet)],['СМР без НДС',r0(R.pl.smrNet)],['Оплата труда',r0(R.pl.labor)],['Накладные',r0(R.pl.ovh)],['Прибыль до налогов',r0(R.pl.profit)],['Рентабельность',+R.pl.margin.toFixed(4)],[],
+    ['Допущения: бригада '+S.P.crew+' чел., '+S.P.rate+' руб./день, оплата труда '+S.P.labor+'% СМР, накладные '+S.P.ovh+'%, НДС '+S.P.vat+'%']);
+  var w1=XLSX.utils.aoa_to_sheet(fin); w1['!cols']=[{wch:56},{wch:16},{wch:16},{wch:16},{wch:16},{wch:16},{wch:10}]; XLSX.utils.book_append_sheet(wb,w1,'Финотчёт');
+  var est=[['№','Этап','Наименование работ','Ед.','Объём','Цена мат.','Цена СМР','Мат.','СМР','Итого','ПСПР','Откл.']],n=0;
+  sortedRows(R).forEach(function(r){n++;est.push([n,r.w.group,r.w.name,r.w.unit,r.w.qty,+(r.w.cm*r.f).toFixed(2),r.w.cs,r0(r.cm),r0(r.cs),r0(r.total),r0(r.limit),r0(r.diff)]);});
+  est.push(['','','ИТОГО','','','','',r0(R.T.mat),r0(R.T.smr),r0(R.T.total),r0(R.T.limit),r0(R.T.diff)]);
+  var w2=XLSX.utils.aoa_to_sheet(est); w2['!cols']=[{wch:5},{wch:34},{wch:60},{wch:7},{wch:10},{wch:11},{wch:11},{wch:13},{wch:13},{wch:14},{wch:14},{wch:13}]; XLSX.utils.book_append_sheet(wb,w2,'Смета');
+  var g=[['№','Этап','СМР, руб.','Чел.-дн.','Раб. дн.','Сдвиг','Начало','Окончание']],sc=R.sched;
+  var t0=sc.start-((new Date(sc.start).getUTCDay()+6)%7)*DAY,wk=[];
+  for(var t=t0;t<=sc.end;t+=7*DAY) wk.push(t);
+  wk.forEach(function(t){g[0].push(dt(t).slice(0,5));});
+  R.stages.forEach(function(s,i){var row=[i+1,s.name,r0(s.smr),+s.laborDays.toFixed(1),s.dur,S.lags[s.name]||0,dt(s.start),dt(s.end)];wk.forEach(function(t){row.push(s.start<=t+6*DAY&&s.end>=t?'■':'');});g.push(row);});
+  g.push(['','Весь срок','',+sc.laborDays.toFixed(1),sc.workDays,'',dt(sc.start),dt(sc.end)]);
+  var w3=XLSX.utils.aoa_to_sheet(g); w3['!cols']=[{wch:4},{wch:52},{wch:14},{wch:10},{wch:9},{wch:7},{wch:12},{wch:12}].concat(wk.map(function(){return {wch:5};})); XLSX.utils.book_append_sheet(wb,w3,'График');
+  var mt=[['№','Материал','Ед.','Количество','Цена','Сумма']];
+  matList(R.rows).forEach(function(m,i){mt.push([i+1,m.name,m.unit,+m.qty.toFixed(3),m.price,r0(m.sum)]);});
+  var w4=XLSX.utils.aoa_to_sheet(mt); w4['!cols']=[{wch:5},{wch:80},{wch:7},{wch:12},{wch:12},{wch:14}]; XLSX.utils.book_append_sheet(wb,w4,'Материалы');
+  var buf=XLSX.write(wb,{bookType:'xlsx',type:'array'});
+  if(!(window.claude&&window.claude.use)){
+    try{
+      var bl=new Blob([buf],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}),a=document.createElement('a');
+      a.href=URL.createObjectURL(bl);a.download='krovlya_smeta_grafik.xlsx';document.body.appendChild(a);a.click();
+      setTimeout(function(){URL.revokeObjectURL(a.href);a.remove();},2000);msg('Файл скачан.');
+    }catch(e){msg('Не удалось скачать файл: '+((e&&e.message)||e),true);}
+    return;
+  }
+  window.claude.use('downloads').then(function(d){
+    if(!d){msg('Скачивание недоступно в этом окне.',true);return;}
+    return d.save({filename:'Кровля_смета_график.xlsx',data:buf}).then(function(){msg('Файл сохранён.');});
+  }).catch(function(e){ if(e&&e.code==='declined') msg('Сохранение отменено.'); else msg('Не удалось сохранить файл: '+((e&&e.message)||e),true); });
+}
+
+/* ---------- запуск ---------- */
+load(); toUI();
+['p-start','p-crew','p-rate','p-labor','p-ovh','p-vat'].forEach(function(id){$(id).addEventListener('change',function(){fromUI();toUI();save();render();});});
+$('tabs').addEventListener('click',function(e){var b=e.target.closest('.tab');if(!b)return;S.tab=b.getAttribute('data-tab');render();});
+$('file').addEventListener('change',function(){var f=this.files[0];if(f)onFile(f);this.value='';});
+$('dl').addEventListener('click',exportXlsx);
+if(window.matchMedia&&window.matchMedia('(max-width:560px)').matches) $('paramBox').open=false;
+setModel(SAMPLE,'Пример: '+(SAMPLE.obj?SAMPLE.obj.slice(0,70)+'… · ':'')+'цены «'+SAMPLE.company+'» · '+SAMPLE.works.length+' работ (ваш файл)');
+})();
+
+</script>
+</body></html>
